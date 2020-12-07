@@ -17,6 +17,12 @@ export class AuthService {
     const url_api='api/users/login';
     return this.http.post<User>(url_api, user,{headers:this.headers})
   }
+  registerUser$(user:User) : Observable<any>
+  {
+    const url_api= 'api/users/register';
+    console.log(url_api + "||" + user.email);
+    return this.http.post<User>(url_api,user,{headers:this.headers});
+  }
 
   setToken(token):void
   {

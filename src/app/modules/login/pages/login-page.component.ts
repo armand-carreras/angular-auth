@@ -32,6 +32,7 @@ export class LoginPageComponent implements OnInit {
   {
     this.auth.loginUser$(user).subscribe(data =>
       {
+        localStorage.setItem('user', JSON.stringify(data));
         this.auth.setToken(data.token);
         this.router.navigate([`users/profile/${data.id}`]);
       });

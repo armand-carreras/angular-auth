@@ -4,6 +4,7 @@ import { LoginFormComponent } from './components/login-form.component';
 import { LoginPageComponent } from './pages/login-page.component';
 import { LoginRoutingModule} from './login-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from 'src/app/shared/material';
 
 
 
@@ -12,7 +13,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     LoginRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MaterialModule
   ]
 })
 export class LoginModule { }

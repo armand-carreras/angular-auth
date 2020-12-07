@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login-form',
@@ -15,6 +15,17 @@ export class LoginFormComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+
+public getError(controlName: string): string[] {
+  let error =  [];
+  const control = this.formGroup.get(controlName);
+  if (control.touched && control.errors != null) {
+   // error = JSON.stringify(control.errors);
+    error = [...Object.keys(control.errors)];
+  }
+  return error;
+}
 
   onSubmit()
   {

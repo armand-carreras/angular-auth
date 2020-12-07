@@ -64,9 +64,12 @@ export class FakeBackend implements HttpInterceptor {
                     return throwError({ status: 401, error: { message: 'Unauthorised' } });
                 }
             }
+
             // register user
+            console.log("aaaaaaaaaaaaaaaaaaaaaaa");
             if (request.url.endsWith('api/users/register') && request.method === 'POST') {
-                // get new user object from post body
+                console.log("bbbbbbbbbbbbbbbbbbbbbb");
+              // get new user object from post body
                 let newUser = request.body;
                 // validation
                 let duplicateUser = users.filter(user => { return user.email === newUser.email; }).length;
@@ -77,6 +80,7 @@ export class FakeBackend implements HttpInterceptor {
                 newUser.id = users.length + 1;
                 users.push(newUser);
                 localStorage.setItem('users', JSON.stringify(users));
+                console.log(users);
                 // respond 200 OK
                 return of(new HttpResponse({ status: 200 }));
             }

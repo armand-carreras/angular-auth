@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { User } from 'src/app/shared/models/user';
 import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
@@ -10,6 +11,7 @@ import { UserService } from 'src/app/shared/services/user.service';
 export class UserComponent implements OnInit {
 
   userId:number;
+  localUser:User;
 
   constructor(private route : ActivatedRoute,
               private us : UserService) { }
@@ -24,8 +26,12 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      this.userId = Number(params.get("id"))
-      this.us.getUserById$(this.userId);
+      this.userId = Number(params.get("id"));
+      this.us.getUserById$(this.userId).subscribe(data =>
+        {
+          this.localUser = data;
+          console.log(this.localUser);
+        })
     })
   }
 

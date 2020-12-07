@@ -10,6 +10,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { fakeBackendProvider } from './shared/helpers/fake-backend.interceptor';
 import { HttpClientModule } from '@angular/common/http';
 
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormField } from '@angular/material/form-field';
+import { MatDividerModule } from '@angular/material/divider';
+
+
+
 @NgModule({
   declarations: [
     AppComponent
@@ -21,7 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
     HomeModule,
     LoginModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [fakeBackendProvider],
   bootstrap: [AppComponent]
