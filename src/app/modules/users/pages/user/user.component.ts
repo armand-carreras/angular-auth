@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-user',
@@ -7,9 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  userId:number;
 
-  ngOnInit(): void {
+  constructor(private route : ActivatedRoute,
+              private us : UserService) { }
+
+
+  //Leer el id del usuario que viene por parámetro
+  //lamar al servicio UserService pasando el id
+  //crear un método en UserService llamado:
+    //getUserById$(id) : Observable<User>{}
+  //Subscribirse al método y recoger el user que devuelve
+  //pimtar los datos del user
+
+  ngOnInit() {
+    this.route.paramMap.subscribe(params => {
+      this.userId = Number(params.get("id"))
+      this.us.getUserById$(this.userId);
+    })
   }
+
 
 }

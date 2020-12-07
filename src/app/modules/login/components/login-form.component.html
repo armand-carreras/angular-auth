@@ -1,2 +1,7 @@
-<p>login-form works!</p>
+<form [formGroup]='formGroup' (ngSubmit)='onSubmit()'>
+  <input type="hidden" formControlName="id">
+  <input type="text" formControlName="email">
+  <input type="password" formControlName="password">
+  <button type="submit">LOG IN</button>
+</form>
 <a routerLink='/users/register'>To register go to users</a>

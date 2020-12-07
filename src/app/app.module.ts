@@ -7,6 +7,8 @@ import { HeaderModule } from './shared/components/header';
 import { HomeModule } from './modules/home/home.module';
 import { LoginModule } from './modules/login';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { fakeBackendProvider } from './shared/helpers/fake-backend.interceptor';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,9 +20,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HeaderModule,
     HomeModule,
     LoginModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [fakeBackendProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
